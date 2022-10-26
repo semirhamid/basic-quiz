@@ -1,0 +1,70 @@
+
+
+
+
+    let newProps = (data !== {}) ? data.map(item => <Question question={item.question} answers={shuffle(item.answers)} />) : {}
+
+    function shuffle(array) {
+        let currentIndex = array.length,  randomIndex;
+
+        while (currentIndex !== 0) {
+
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+
+            [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+        }
+        return array;
+        }
+
+
+
+let data = {answers: [
+    {answer: "December 18, 2004",
+        answerType: "incorrect",
+        choosed: false,
+        id: 1},
+        {answer: "December 18, 2004",
+        answerType: "incorrect",
+        choosed: false,
+        id: 2},
+        {answer: "December 18, 2004",
+        answerType: "incorrect",
+        choosed: false,
+        id: 3},
+        {answer: "December 18, 2022",
+        answerType: "correct",
+        choosed: false,
+        id: 4}
+        ],
+question: "When was the original Star Wars: Battlefront II released?"}
+
+
+function organizeData(data){
+
+        const newData = data.map(item => {
+            return{
+                question: `${item.question}`,
+                answers: [
+                {id:1,
+                    answerType: "incorrect",
+                    choosed:false,
+                    answer: `${item.incorrect_answers[0]}`},
+                {id:2,
+                    answerType: "incorrect",
+                    choosed:false,
+                    answer: `${item.incorrect_answers[1]}`},
+                {id:3,
+                    answerType: "incorrect",
+                    choosed:false,
+                    answer: `${item.incorrect_answers[2]}`},
+                {id:4,
+                    answerType: "correct",
+                    choosed:false,
+                    answer: `${item.correct_answer}`}
+                ]
+            }
+        })
+
+        console.log(newData)
+    }
